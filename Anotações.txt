@@ -1,9 +1,0 @@
-Thread.sleep(); Para o tempo ir devagar..
-
-Quando eu sei o número de repetições, uso for.
-Quando eu não sei o número de repetições, uso while.
-Quando eu preciso que algo seja feito e depois testado, eu uso do while.
-Para o do while, o que funciona é o login. Exemplo: primeiro eu insiro o meu e-mail e senha, e só depois
-eu verifico se este login está correto.
-
-Batalhador
