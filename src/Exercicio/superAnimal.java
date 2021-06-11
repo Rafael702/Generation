@@ -8,15 +8,18 @@ public class superAnimal {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(Animal animal, String name) {
 		this.name = name;
+		
 	}
+
 	public int getIdade() {
 		return idade;
 	}
-	public void setIdade(int idade) {
+	public void setIdade(Animal animal,int idade) {
 		this.idade = idade;
 	}
+	
 	
 	
 }

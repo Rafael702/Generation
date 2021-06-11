@@ -10,7 +10,7 @@ public class Preguica extends superAnimal implements Animal{
 
 	@Override
 	public void acao() {
-		System.out.println("A Preguiça sobe árvores..");
+		System.out.println("A Preguiça sobe em árvores..");
 		
 	}
 
