@@ -17,9 +17,21 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
+//Serve for around in sky	
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+//		auth.userDetailsService(userDetailsService);
+//	}
+	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
+		
+		auth.inMemoryAuthentication()
+		.withUser("root")
+		.password(passwordEncoder().encode("root"))
+		.authorities("ROLE_USER");
+	
 	}
 	
 	@Bean
