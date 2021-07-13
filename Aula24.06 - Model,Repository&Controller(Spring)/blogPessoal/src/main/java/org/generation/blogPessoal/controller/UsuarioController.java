@@ -2,7 +2,7 @@ package org.generation.blogPessoal.controller;
 
 import java.util.Optional;
 
-import org.generation.blogPessoal.model.UserLogin;
+import org.generation.blogPessoal.model.UsarioLogin;
 import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.generation.blogPessoal.service.UsuarioService;
@@ -27,14 +27,26 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@PostMapping("/logar")
-	public ResponseEntity<UserLogin> Authentication(@RequestBody Optional<UserLogin> user){
-		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
+	public ResponseEntity<UsarioLogin> Authentication(@RequestBody Optional<UsarioLogin> usuario){
+		return usuarioService.Logar(usuario).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario){
-		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.CadastrarUsuario(usuario));
-	}
+	//Ajuste para o Heroku
+//	@PostMapping("/cadastrar")
+//	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario){
+//		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.CadastrarUsuario(usuario));
+//	}
 	
+	@PostMapping("/cadastrar")
+	public ResponseEntity <Usuario> Post(@RequestBody Usuario usuario) {
+		
+		Usuario usuarioResp = usuarioService.CadastrarUsuario(usuario);
+		try {
+			return ResponseEntity.status(HttpStatus.CREATED).body(usuarioResp);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+		
 }
