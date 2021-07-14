@@ -61,9 +61,6 @@ public class Usuario {
 		this.nome = nome;
 	}
 	
-	public String getusuario() {
-		return usuario;
-	}
 
 	public void setLogin(String usuario) {
 		this.usuario = usuario;
@@ -77,13 +74,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 
 	public List<Postagem> getPostagem() {
 		return postagem;
@@ -92,7 +82,14 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 	
 	
 }
