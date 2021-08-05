@@ -1,22 +1,14 @@
-package org.generation.blogPessoal.model;
+package org.generation.minhaLojaDeGames.model;
 
 public class UserLogin {
 	
 	private String nome;
 	
-	private String login;
+	private String usuario;
 	
 	private String senha;
 	
 	private String token;
-	
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
 
 	public String getNome() {
 		return nome;
@@ -24,6 +16,14 @@ public class UserLogin {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -41,5 +41,6 @@ public class UserLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	
 	
 }

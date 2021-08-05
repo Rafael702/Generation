@@ -3,8 +3,7 @@ package org.generation.blogPessoal.service;
 import java.nio.charset.Charset;
 import java.util.Optional;
 import org.apache.commons.codec.binary.Base64;
-
-import org.generation.blogPessoal.model.UserLogin;
+import org.generation.blogPessoal.model.UsarioLogin;
 import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +25,24 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 	
-	public Optional<UserLogin> Logar(Optional<UserLogin> user){
+	public Optional<UsarioLogin> Logar(Optional<UsarioLogin> usuarioLogin){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<Usuario> usuario = repository.findByUsuario(user.get().getLogin());
+		Optional<Usuario> usuario = repository.findByUsuario(usuarioLogin.get().getUsuario());
 		
 		if(usuario.isPresent()) {
-			if(encoder.matches(user.get().getSenha(), usuario.get().getLogin()));{
+			if(encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getUsuario()));{
 			
-				String auth  = user.get().getLogin() + ":" + user.get().getSenha();
+				String auth  = usuarioLogin.get().getUsuario() + ":" + usuarioLogin.get().getSenha();
 				byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
 				String authHeader = "Basic " + new String(encodeAuth);
 				
-				user.get().setToken(authHeader);
-				user.get().setNome(usuario.get().getNome());
+				usuarioLogin.get().setToken(authHeader);
+				usuarioLogin.get().setNome(usuario.get().getNome());
+				usuarioLogin.get().setId(usuario.get().getId());
+				usuarioLogin.get().setFoto(usuario.get().getFoto());
+				usuarioLogin.get().setTipo(usuario.get().getTipo());
 				
-				return user;
+				return usuarioLogin;
 			}
 		}
 		return null;

@@ -32,6 +32,11 @@ public class UsuarioModelTest {
 	
 	Validator validator = factory.getValidator();
 	
+	@BeforeEach
+	public void start() {
+		usuario  = new Usuario(0L, "Rafael Santos" , "rafael@email.com.br", "123456789");
+	}
+	
 	@Test
 	@DisplayName("✔ Valida Atributos Não Nulos")
 	public void testValidaAtributos() {

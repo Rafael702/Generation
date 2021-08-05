@@ -1,4 +1,4 @@
-package org.generation.blogPessoal.seguranca;
+package org.generation.minhaLojaDeGames.seguranca;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,30 +12,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
+public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-//Serve for around in sky	
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-//		auth.userDetailsService(userDetailsService);
-//	}
-	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		auth.userDetailsService(userDetailsService);
-		
-		auth.inMemoryAuthentication()
-		.withUser("root")
-		.password(passwordEncoder().encode("root"))
-		.authorities("ROLE_USER");
-	
 	}
 	
 	@Bean
-	public PasswordEncoder	passwordEncoder() {
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
@@ -49,6 +37,5 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable();
-		}
-	
+	}
 }

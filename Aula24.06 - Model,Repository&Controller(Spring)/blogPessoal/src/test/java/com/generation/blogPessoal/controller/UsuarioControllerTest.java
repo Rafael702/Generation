@@ -2,7 +2,12 @@ package com.generation.blogPessoal.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.text.ParseException;
+import java.time.format.DateTimeFormatter;
+
 import org.generation.blogPessoal.model.Usuario;
+import org.generation.blogPessoal.repository.UsuarioRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,6 +30,31 @@ public class UsuarioControllerTest {
 	
 	private Usuario usuario;
 	private Usuario usuarioUpdate;
+	private Usuario usuarioAdmin;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	
+	@BeforeAll
+	public void start() throws ParseException {
+
+		
+        usuarioAdmin = new Usuario(0L, "Administrador", "admin@email.com.br", "admin123");
+
+		if(!usuarioRepository.findByUsuario(usuarioAdmin.getUsuario()).isPresent()) {
+
+            HttpEntity<Usuario> request = new HttpEntity<Usuario>(usuarioAdmin);
+			testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
+			
+		}
+		
+		
+        usuario = new Usuario(0L, "Rafael Santos", "joao@email.com.br", "13465278");
+        
+		
+        usuarioUpdate = new Usuario(2L, "João da Silva dos Santos Souza", "joao@email.com.br", "joao123");
+	}
+		
 	
 	@Disabled
 	@Test

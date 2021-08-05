@@ -1,12 +1,12 @@
-package org.generation.blogPessoal.model;
+package org.generation.minhaLojaDeGames.seguranca;
 
 import java.util.Collection;
 
+import org.generation.minhaLojaDeGames.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsImpl implements UserDetails{
-	
 	
 	private static final long serialVersionUID = 1l;
 	
@@ -17,8 +17,6 @@ public class UserDetailsImpl implements UserDetails{
 		this.userName = user.getUsuario();
 		this.password = user.getSenha();
 	}
-	
-	public UserDetailsImpl() {}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -61,5 +59,5 @@ public class UserDetailsImpl implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 }
