@@ -12,8 +12,6 @@ import br.com.generation.blogpessoal.model.Usuario;
 import br.com.generation.blogpessoal.model.UsuarioLogin;
 import br.com.generation.blogpessoal.repository.UsuarioRepository;
 
-
-
 @Service //annotation para falar que a classe é de serviço (regras de negocio)
 public class UsuarioService {
 

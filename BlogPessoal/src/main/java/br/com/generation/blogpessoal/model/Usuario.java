@@ -22,7 +22,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 
 	@NotNull
 	@Size(min = 2, max = 100)
@@ -48,7 +48,7 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(Long id, String nome, String usuario, String senha) {
+	public Usuario(long id, String nome, String usuario, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
